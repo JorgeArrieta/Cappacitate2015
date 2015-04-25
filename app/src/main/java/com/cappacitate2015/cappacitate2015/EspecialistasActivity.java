@@ -23,6 +23,8 @@ public class EspecialistasActivity extends ActionBarActivity {
     private ArrayList<clsEspecialista> especialistas;
     int id;
     String mEspecialiad;
+    int logoDrawableId;
+    ArrayList<Integer> logoDrawableIdList = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,18 +70,23 @@ public class EspecialistasActivity extends ActionBarActivity {
                         case 0:
                             switch (Position){
                                 case 0:
+                                    logoDrawableId = R.drawable.image_00;
                                     imgLogo.setImageResource(R.drawable.image_00);
                                     break;
                                 case 1:
+                                    logoDrawableId = R.drawable.image_01;
                                     imgLogo.setImageResource(R.drawable.image_01);
                                     break;
                                 case 2:
+                                    logoDrawableId = R.drawable.image_02;
                                     imgLogo.setImageResource(R.drawable.image_02);
                                     break;
                                 case 3:
+                                    logoDrawableId = R.drawable.image_03;
                                     imgLogo.setImageResource(R.drawable.image_03);
                                     break;
                                 case 4:
+                                    logoDrawableId = R.drawable.image_99;
                                     imgLogo.setImageResource(R.drawable.image_99);
                                     break;
 
@@ -88,24 +95,29 @@ public class EspecialistasActivity extends ActionBarActivity {
                         case 1:
                             switch (Position){
                                 case 0:
+                                    logoDrawableId = R.drawable.image_04;
                                     imgLogo.setImageResource(R.drawable.image_04);
                                     break;
                                 case 1:
+                                    logoDrawableId = R.drawable.image_05;
                                     imgLogo.setImageResource(R.drawable.image_05);
                                     break;
                                 case 2:
+                                    logoDrawableId = R.drawable.image_06;
                                     imgLogo.setImageResource(R.drawable.image_06);
                                     break;
                                 case 3:
+                                    logoDrawableId = R.drawable.image_07;
                                     imgLogo.setImageResource(R.drawable.image_07);
                                     break;
                                 case 4:
+                                    logoDrawableId = R.drawable.image_99;
                                     imgLogo.setImageResource(R.drawable.image_99);
                                     break;
                             }
                             break;
                     }
-
+                    logoDrawableIdList.add(logoDrawableId);
                 }
             }
         });
@@ -123,6 +135,7 @@ public class EspecialistasActivity extends ActionBarActivity {
                 Bundle b = new Bundle();
                 b.putInt("Id", position);
                 b.putString("Nombre", especialistas.get(position).Nombre);
+                b.putInt("LogoDrawableId", logoDrawableIdList.get(position));
                 intent.putExtras(b);
                 startActivity(intent);
             }

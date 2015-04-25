@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roomorama.caldroid.CaldroidFragment;
@@ -36,9 +37,14 @@ public class CalendarActivity extends ActionBarActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         mNombre = bundle.getString("Nombre");
+        int mId = bundle.getInt("Nombre");
+        int mLogoDrawableId = bundle.getInt("LogoDrawableId");
 
         txtNombre = (TextView)findViewById(R.id.txtNombre);
         txtNombre.setText(mNombre);
+
+        ImageView imgLogo = (ImageView) findViewById(R.id.imgLogo);
+        imgLogo.setImageResource(mLogoDrawableId);
 
         caldroidFragment = new CaldroidFragment();
         Bundle args = new Bundle();
