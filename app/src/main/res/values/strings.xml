@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cappacitate2015</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_especialistas">Especialistas</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_cita">CitaActivity</string>
+
+</resources>

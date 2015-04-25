@@ -1,0 +1,9 @@
+App para el area de Salud:
+
+Permitir al usuario poder ubicar un médico especialista cerca a su ubicación para poder agendar una cita médica.
+
+- La aplicación mostrará inicialmente una lista para permitir elegir una Especialidad Médica (Odontología, Dermatología, Etc)
+- Luego mostrará una lista con los Médicos Especialistas mas cercanos a su ubicación, correspondiente a la Especialidad seleccionada.
+- Luego de decidir y seleccionar el Especialista deseado, podrá agendar una cita, seleccionando un día en un calendario y posteriormente una hora.
+
+La manera de monetizar, sería cobrando una comisión a cada Especialista, por cada cita agendada a traves de la aplicación.
