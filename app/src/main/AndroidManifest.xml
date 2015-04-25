@@ -28,6 +28,10 @@
             android:name=".CitaActivity"
             android:label="@string/title_activity_cita" >
         </activity>
+        <activity
+            android:name=".MapaActivity"
+            android:label="@string/title_activity_mapa" >
+        </activity>
     </application>
 
 </manifest>

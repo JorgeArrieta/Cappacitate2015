@@ -1,6 +1,8 @@
 package com.cappacitate2015.cappacitate2015;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,15 +21,21 @@ public class MainActivity extends ActionBarActivity {
 
     private ListView lstEspecialidades;
     private clsDatos datos = new clsDatos();
+    ArrayList<String> especialidades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Cambiar color Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(getResources().getColor(R.color.defaultCitapps));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         lstEspecialidades = (ListView)findViewById(R.id.lstEspecialidades);
 
-        ArrayList<String> especialidades = datos.GetEspecialidades();
+        especialidades = datos.GetEspecialidades();
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, especialidades);
 
         lstEspecialidades.setAdapter(adaptador);
@@ -42,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(MainActivity.this, EspecialistasActivity.class);
                 Bundle b = new Bundle();
                 b.putInt("Id", position);
+                b.putString("Especialidad", especialidades.get(position));
                 intent.putExtras(b);
                 startActivity(intent);
             }

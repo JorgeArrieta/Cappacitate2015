@@ -1,12 +1,15 @@
 package com.cappacitate2015.cappacitate2015;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,18 +18,31 @@ import java.util.ArrayList;
 
 public class EspecialistasActivity extends ActionBarActivity {
     private ListView lstEspecialistas;
+    private TextView txtEspecialidad;
     private clsDatos datos = new clsDatos();
+    private ArrayList<clsEspecialista> especialistas;
+    int id;
+    String mEspecialiad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_especialistas);
 
+        // Cambiar color Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(getResources().getColor(R.color.defaultCitapps));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+        txtEspecialidad = (TextView)findViewById(R.id.txtEspecialidad);
+
         Bundle bundle = this.getIntent().getExtras();
-        int id = bundle.getInt("Id");
+        id = bundle.getInt("Id");
+        mEspecialiad = bundle.getString("Especialidad");
 
-        ArrayList<clsEspecialista> especialistas = new ArrayList<clsEspecialista>();
+        txtEspecialidad.setText(mEspecialiad);
 
+        especialistas = new ArrayList<clsEspecialista>();
         especialistas = datos.GetEspecialistas(id);
 
         lstEspecialistas = (ListView)findViewById(R.id.lstEspecialistas);
@@ -40,10 +56,56 @@ public class EspecialistasActivity extends ActionBarActivity {
                     TextView txtNombre = (TextView) view.findViewById(R.id.txtNombre);
                     TextView txtDireccion = (TextView) view.findViewById(R.id.txtDireccion);
                     TextView txtTelefono = (TextView) view.findViewById(R.id.txtTelefono);
+                    ImageView imgLogo = (ImageView) view.findViewById(R.id.imgLogo);
 
                     txtNombre.setText(especialistaItem.Nombre);
                     txtDireccion.setText(especialistaItem.Direccion);
                     txtTelefono.setText(especialistaItem.Telefono);
+
+                    //String image = "image_0" + String.valueOf(Position);
+                    //imgLogo.setImageResource(R.drawable.image_00);
+                    switch (id){
+                        case 0:
+                            switch (Position){
+                                case 0:
+                                    imgLogo.setImageResource(R.drawable.image_00);
+                                    break;
+                                case 1:
+                                    imgLogo.setImageResource(R.drawable.image_01);
+                                    break;
+                                case 2:
+                                    imgLogo.setImageResource(R.drawable.image_02);
+                                    break;
+                                case 3:
+                                    imgLogo.setImageResource(R.drawable.image_03);
+                                    break;
+                                case 4:
+                                    imgLogo.setImageResource(R.drawable.image_99);
+                                    break;
+
+                            }
+                            break;
+                        case 1:
+                            switch (Position){
+                                case 0:
+                                    imgLogo.setImageResource(R.drawable.image_04);
+                                    break;
+                                case 1:
+                                    imgLogo.setImageResource(R.drawable.image_05);
+                                    break;
+                                case 2:
+                                    imgLogo.setImageResource(R.drawable.image_06);
+                                    break;
+                                case 3:
+                                    imgLogo.setImageResource(R.drawable.image_07);
+                                    break;
+                                case 4:
+                                    imgLogo.setImageResource(R.drawable.image_99);
+                                    break;
+                            }
+                            break;
+                    }
+
                 }
             }
         });
@@ -60,6 +122,7 @@ public class EspecialistasActivity extends ActionBarActivity {
                 Intent intent = new Intent(EspecialistasActivity.this, CalendarActivity.class);
                 Bundle b = new Bundle();
                 b.putInt("Id", position);
+                b.putString("Nombre", especialistas.get(position).Nombre);
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -83,7 +146,12 @@ public class EspecialistasActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.mnuVerMapa) {
+            Intent intent = new Intent(EspecialistasActivity.this, MapaActivity.class);
+            Bundle b = new Bundle();
+            b.putString("Nombre", mEspecialiad);
+            intent.putExtras(b);
+            startActivity(intent);
             return true;
         }
 

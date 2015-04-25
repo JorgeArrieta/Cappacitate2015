@@ -1,5 +1,5 @@
 <resources>
-
+    <color name="defaultCitapps">#B81E7DFF</color>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

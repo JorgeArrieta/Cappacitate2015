@@ -1,11 +1,14 @@
 package com.cappacitate2015.cappacitate2015;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
@@ -17,11 +20,25 @@ import java.util.Date;
 
 public class CalendarActivity extends ActionBarActivity {
     private CaldroidFragment caldroidFragment = null;
+    private String mNombre = "";
+
+    TextView txtNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        // Cambiar color Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(getResources().getColor(R.color.defaultCitapps));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+        Bundle bundle = this.getIntent().getExtras();
+        mNombre = bundle.getString("Nombre");
+
+        txtNombre = (TextView)findViewById(R.id.txtNombre);
+        txtNombre.setText(mNombre);
 
         caldroidFragment = new CaldroidFragment();
         Bundle args = new Bundle();
@@ -41,7 +58,9 @@ public class CalendarActivity extends ActionBarActivity {
                 //date
                 Intent intent = new Intent(CalendarActivity.this, CitaActivity.class);
                 Bundle b = new Bundle();
-                b.putString("Fecha", date.toString());
+                //b.putString("Fecha", date.toString());
+                b.putLong("Fecha", date.getTime());
+                b.putString("Nombre", mNombre);
                 intent.putExtras(b);
                 startActivity(intent);
             }

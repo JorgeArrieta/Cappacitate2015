@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Cappacitate2015</string>
+    <string name="app_name">CitApps</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_especialistas">Especialistas</string>
-    <string name="title_activity_calendar">CalendarActivity</string>
-    <string name="title_activity_cita">CitaActivity</string>
+    <string name="title_activity_calendar">Calendario</string>
+    <string name="title_activity_cita">Agendar Cita</string>
+    <string name="verMapa">Ver en el mapa</string>
+    <string name="title_activity_mapa">Especialistas cerca a ti</string>
 
 </resources>
